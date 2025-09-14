@@ -12,3 +12,22 @@
 
 test -s ~/.alias && . ~/.alias || true
 export PATH="$HOME/.cargo/bin:$PATH"
+
+wmoutput() {
+  case "$1" in
+    on|off)
+      if pgrep -x niri-session >/dev/null 2>&1; then
+        niri msg action power-"$1"-monitors
+      elif pgrep -x Hyprland >/dev/null 2>&1; then
+        hyprctl dispatch dpms "$1"
+      else
+        echo "No supported WM (niri or Hyprland) detected."
+        return 1
+      fi
+      ;;
+    *)
+      echo "Usage: wmoutput {on|off}"
+      return 1
+      ;;
+  esac
+}
