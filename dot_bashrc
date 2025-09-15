@@ -11,7 +11,7 @@
 # ridden in every subshell.
 
 test -s ~/.alias && . ~/.alias || true
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/bin/xwayland-satellite:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin"
 
 wmoutput() {
   case "$1" in
