@@ -11,7 +11,7 @@
 # ridden in every subshell.
 
 test -s ~/.alias && . ~/.alias || true
-export PATH="/usr/bin/xwayland-satellite:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/bin:/bin"
 
 wmoutput() {
   case "$1" in
@@ -31,3 +31,5 @@ wmoutput() {
       ;;
   esac
 }
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path bash -l)"
